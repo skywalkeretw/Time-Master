@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Work time</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div>
+        <h1>Time Master</h1>
+        <a href="index.html">
+            <img src="engrey.png">
+            <img src="en.png">
+        </a>
+        <p>
+            Wollen sie wissen wie lang sie gearbeitet haben??
+            Wollrn sie wissen was sie schluss amchen können wenn sie ihre arbeit um 6:38 anfangen?
+            dan verwenden sie unseren hilfreichen dienst mitdem sie ihre arbeitszeit besser erfassen können.
+        </p>
+    </div>
+    <div id="one">
+        <h2>Wann Bin ICh Fertig</h2>
+        <h3>Anfangs Zeit:</h3>
+        <input id="beginnHour" type="number" value="7" min="0" max="24">:
+        <input id="beginnMin" type="number" value="30" min="0" max="60">
+        <br>
+        <h3>Arbeitsdauer:</h3>
+        <input id="workTimeHour" type="number" value="8" min="0" max="12">
+        <input id="workTimeMin" type="number" value="0" min="0" max="60">
+        <button onclick="standardHours(this)" value="0">8 Hours</button>
+        <button onclick="standardHours(this)" value="1">7 hours 30 min</button>
+        <button onclick="standardHours(this)" value="2">7 hour</button>
+        <br>
+        <h3>Pausendauer:</h3>
+        <input id="breakTimeHour" type="number" value="0" min="0" max="12">
+        <input id="breakTimeMin" type="number" value="0" min="0" max="60" >
+        <button name="1" onclick="standardBreaks(this)" value="0">0 min</button>
+        <button name="1" onclick="standardBreaks(this)" value="1">30 min</button>
+        <button name="1" onclick="standardBreaks(this)" value="2">45 min</button>
+        <button name="1" onclick="standardBreaks(this)" value="3">1 stunden</button>
+        <br>
+        <br>
+        <button onclick="calc()">wan hab ich aus</button>
+
+
+        <div id="out"></div>
+        <div id="outCountdown"></div>
+    </div>
+
+    <div id="two">
+        <h2>Anfangszeit</h2>
+        <h3>Time You Started:</h3>
+        <input id="startHour" type="number" value="7" min="0" max="24">:
+        <input id="startMin" type="number" value="30" min="0" max="60">
+        <br>
+        <h3>endzeit:</h3>
+        <input id="endHour" type="number" value="16" min="0" max="24">:
+        <input id="endMin" type="number" value="0" min="0" max="60">
+        <button onclick="getFinishTime()">Get Time</button>
+        <br>
+        <h3>pausendauer:</h3>
+        <input id="breakTimeHour2" type="number" value="0" min="0" max="12">
+        <input id="breakTimeMin2" type="number" value="0" min="0" max="60" >
+        <button name="2" onclick="standardBreaks(this)" value="0">0 min</button>
+        <button name="2" onclick="standardBreaks(this)" value="1">30 min</button>
+        <button name="2" onclick="standardBreaks(this)" value="2">45 min</button>
+        <button name="2" onclick="standardBreaks(this)" value="3">1 stunden</button>
+        <br>
+        <br>
+        <button onclick="calc2()">los</button>
+        <div id="outWorkTime"></div>
+    </div>
+
+    <div>
+        <h1>Countdown</h1>
+        <label>Start Countdown to...</label>
+        <br>
+        <input id="countdownHour" type="number" value="17" min="0" max="24" onchange="enableStartButton()">:
+        <input id="countdownMinute" type="number" value="00" min="0" max="59" onchange="enableStartButton()">
+        <br>
+        <button id="start_button" onclick="startCountdown()">Start</button>
+
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>

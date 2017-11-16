@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset=UTF-8>
+    <title>Work time</title>
+    <style>h1{text-align:center}input{width:49%;padding:12px 20px;margin:8px 0;box-sizing:border-box;border:3px solid #ccc;-webkit-transition:.5s;transition:.5s;outline:0}input:focus{border:3px solid #555}#one{z-index:10;position:relative;float:left;width:50%;padding:12px 20px;margin:8px 0;display:inline-block;box-sizing:border-box;background-color:#e2ffe6}#two{z-index:11;position:relative;float:right;width:50%;padding:12px 20px;margin:8px 0;display:inline-block;box-sizing:border-box;background-color:#d8f5fd}</style>
+</head>
+<body>
+<h1>Time Master</h1>
+<div>
+    <p>
+        Would you like to know how long you have worked?
+        Do you want to konw when you can stop working if you start at 6:23 in the morning?
+        then use the time master the practicle service that will tell you how long you have worked or how long you have worked for.
+    </p>
+</div>
+<div id=one>
+    <h2>What Time Do I Finish</h2>
+    <h3>Time You Started:</h3>
+    <input id=beginnHour type=number value=7 min=0 max=24>:
+    <input id=beginnMin type=number value=30 min=0 max=60>
+    <br>
+    <h3>How Long You Worked for:</h3>
+    <input id=workTimeHour type=number value=8 min=0 max=12>
+    <input id=workTimeMin type=number value=0 min=0 max=60>
+    <button onclick=standardHours(this) value=0>8 Hours</button>
+    <button onclick=standardHours(this) value=1>7 hours 30 min</button>
+    <button onclick=standardHours(this) value=2>7 hour</button>
+    <br>
+    <h3>How Long You Took A Break For:</h3>
+    <input id=breakTimeHour type=number value=0 min=0 max=12>
+    <input id=breakTimeMin type=number value=0 min=0 max=60>
+    <button name=1 onclick=standardBreaks(this) value=0>0 min</button>
+    <button name=1 onclick=standardBreaks(this) value=1>30 min</button>
+    <button name=1 onclick=standardBreaks(this) value=2>45 min</button>
+    <button name=1 onclick=standardBreaks(this) value=3>1 hour</button>
+    <br>
+    <br>
+    <button onclick=calc()>when do i finish</button>
+    <div id=out></div>
+    <div id="time left"></div>
+</div>
+<div id=two>
+    <h2>How Long Have I Worked For</h2>
+    <h3>Time You Started:</h3>
+    <input id=startHour type=number value=7 min=0 max=24>:
+    <input id=startMin type=number value=30 min=0 max=60>
+    <br>
+    <h3>Time You Finished:</h3>
+    <input id=endHour type=number value=16 min=0 max=24>:
+    <input id=endMin type=number value=0 min=0 max=60>
+    <button onclick=getFinishTime()>Get Time</button>
+    <br>
+    <h3>How Long You Took A Break For:</h3>
+    <input id=breakTimeHour2 type=number value=0 min=0 max=12>
+    <input id=breakTimeMin2 type=number value=0 min=0 max=60>
+    <button name=2 onclick=standardBreaks(this) value=0>0 min</button>
+    <button name=2 onclick=standardBreaks(this) value=1>30 min</button>
+    <button name=2 onclick=standardBreaks(this) value=2>45 min</button>
+    <button name=2 onclick=standardBreaks(this) value=3>1 hour</button>
+    <br>
+    <br>
+    <button onclick=calc2()>go</button>
+    <div id=outWorkTime></div>
+</div>
+<script>function calc(){var g=Number(document.getElementById("beginnHour").value);var d=Number(document.getElementById("beginnMin").value);
+var i=Number(document.getElementById("workTimeHour").value);
+var f=Number(document.getElementById("workTimeMin").value);
+var e=Number(document.getElementById("breakTimeHour").value);
+var c=Number(document.getElementById("breakTimeMin").value);
+var a=Math.floor((d+f+c)/60);var h=g+i+e+a;var b=(d+f+c)%60;
+if(b<10){b="0"+b}if(h>24){h-=24}var j="you finish work at "+h+":"+b;
+document.getElementById("out").innerHTML=j}function calc2(){var b=Number(document.getElementById("startHour").value);
+var c=Number(document.getElementById("startMin").value);var e=Number(document.getElementById("endHour").value);
+var h=Number(document.getElementById("endMin").value);var f=Number(document.getElementById("breakTimeHour2").value);
+var d=Number(document.getElementById("breakTimeMin2").value);
+if(b<25&&c<60){var a=0;if(h>0){e+=1;a=60-h}var i=Math.floor((c+d+a)/60);var k=(c+d+a)%60;
+if(k!=0){e-=1;k=60-k}var g=e-b-f-i;
+var j="hours"+g+"min"+k;document.getElementById("outWorkTime").innerHTML=j}}function standardBreaks(c){console.log(c.value);
+var a;
+var b;
+switch(c.value){case"0":a=0;
+b=0;break;case"1":a=0;
+b=30;break;case"2":a=0;b=45;break;case"3":a=1;
+b=0;break}if(c.name==1){document.getElementById("breakTimeHour").value=a;
+document.getElementById("breakTimeMin").value=b}else{document.getElementById("breakTimeHour2").value=a;
+document.getElementById("breakTimeMin2").value=b}}function standardHours(c){var a;var b;switch(c.value){case"0":a=8;
+b=0;break;case"1":a=7;
+b=30;break;case"2":a=7;
+b=0;break}document.getElementById("workTimeHour").value=a;
+document.getElementById("workTimeMin").value=b}function getFinishTime(){document.getElementById("endHour").value=time().getHours();
+document.getElementById("endMin").value=time().getMinutes()}function time(){return new Date()};
+</script>
+</body>
+</html>
